@@ -1,16 +1,10 @@
-<ul>
-  <% flash[:errors].each do |error| %>
-    <li>
-      <%= error %>
-    </li>
+<% if flash.now[:errors] %>
+  <% flash.now[:errors].each do |error| %>
+    <%= error %>
   <% end %>
-</ul>
+<% end %>
 
 <form action="/airplanes" method="post">
-  <label>Form Authenticity Token
-    <input type="text" name="authenticity_token" value="<%= form_authenticity_token %>">
-  </label>
-
   <label>Make
     <input
       type="text"
@@ -25,6 +19,10 @@
       name="airplane[model]"
       value="<%= @airplane.model %>"
     >
+  </label>
+
+  <label>Form Authenticity Token
+    <input type="text" name="authenticity_token" value="<%= form_authenticity_token %>">
   </label>
 
   <input type="submit">
