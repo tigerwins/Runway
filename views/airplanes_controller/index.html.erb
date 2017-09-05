@@ -1,0 +1,8 @@
+<h1>Airplanes Index</h1>
+
+<% if flash[:notice] %>
+  Notice: <%= flash[:notice] %>
+<% end %>
+
+<p>All Airplane data: <%= @airplanes.to_s %></p>
+<a href="/airplanes/new">Add a new airplane</a>
