@@ -6,7 +6,7 @@ Runway is a Controller and Views framework that can interface with the Rack midd
 
 The repo includes a demo as a proof-of-concept of the framework. To view the demo:
 
-* Clone the Runway repository - https://github.com/tigerwins/Runway.git
+* Clone the Runway repository - `git clone https://github.com/tigerwins/Runway.git`
 * Navigate to the Runway directory
 * run `bundle install`
 * run `ruby demo.rb`
