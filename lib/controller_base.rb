@@ -5,7 +5,7 @@ require_relative './session'
 require_relative './flash'
 
 class ControllerBase
-  attr_reader :req, :res, :params, :already_built_response, :token, :session
+  attr_reader :req, :res, :params, :already_built_response, :token
 
   def initialize(req, res, route_params = {})
     @req = req
@@ -24,7 +24,7 @@ class ControllerBase
 
     res['Location'] = url
     res.status = 302
-    session.store_session(res)
+    @session.store_session(res)
     @already_built_response = true
     flash.store_flash(res)
   end
@@ -34,7 +34,7 @@ class ControllerBase
 
     res['Content-Type'] = content_type
     res.write(content)
-    session.store_session(res)
+    @session.store_session(res)
     @already_built_response = true
     flash.store_flash(res)
   end
@@ -51,7 +51,7 @@ class ControllerBase
   end
 
   def session
-    session
+    @session
   end
 
   def invoke_action(name)

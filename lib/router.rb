@@ -18,7 +18,7 @@ class Route
     match_data = regex.match(path)
     route_params = {}
     match_data.names.each { |k| route_params[k] = match_data[k] }
-    controller.new(req, res, route_params).invoke_action(action_name)
+    controller_class.new(req, res, route_params).invoke_action(action_name)
   end
 end
 

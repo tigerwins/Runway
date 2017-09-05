@@ -6,7 +6,7 @@ class Flash
   def initialize(req)
     cookie = req.cookies['_runway_app_flash']
 
-    now = cookie ? JSON.parse(cookie) : {}
+    @now = cookie ? JSON.parse(cookie) : {}
     @flash = {}
   end
 

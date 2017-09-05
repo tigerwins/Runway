@@ -8,7 +8,7 @@ class ShowExceptions
   end
 
   def call(env)
-    app.call(env)
+    @app.call(env)
     rescue Exception => e
       render_exception(e)
   end
@@ -21,6 +21,6 @@ class ShowExceptions
     error_template = File.read(template_path)
     error_body = ERB.new(error_template).result(binding)
 
-    ["500", { "Content-type" => "text/html" }, [error_body]]
+    ["500", { "Content-type" => "text/html" }, error_body]
   end
 end
