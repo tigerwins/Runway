@@ -10,7 +10,7 @@ The repo includes a demo as a proof-of-concept of the framework. To view the dem
 * Navigate to the Runway directory
 * run `bundle install`
 * run `ruby demo.rb`
-* Go to localhost:3000 to view!
+* Go to `localhost:3000` in your browser to view!
 
 ## Features
 
