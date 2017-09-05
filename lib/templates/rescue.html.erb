@@ -1,0 +1,10 @@
+<body>
+  <h1>Exception thrown: <%= e.exception %></h1>
+  <h3><%= e.message %></h3>
+  <ol>
+    <% e.backtrace.each do |step| %>
+      <li><%= step %></li>
+    <% end %>
+  </ol>
+
+</body>
