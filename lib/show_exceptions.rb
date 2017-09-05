@@ -8,7 +8,7 @@ class ShowExceptions
   end
 
   def call(env)
-    @app.call(env)
+    app.call(env)
     rescue Exception => e
       render_exception(e)
   end
