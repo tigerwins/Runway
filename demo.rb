@@ -1,12 +1,12 @@
 require 'rack'
-require_relative './lib/controller_base.rb'
-require_relative './lib/router.rb'
+require_relative '../lib/controller_base.rb'
+require_relative '../lib/router.rb'
 
 class Airplane
   attr_reader :make, :model
 
   def self.all
-
+    @airplanes ||= []
   end
 
   def initialize(params = {})
@@ -68,3 +68,21 @@ class AirplanesController < ControllerBase
 end
 
 router = Router.new
+router.draw do
+  get Regexp.new("^/airplanes$"), AirplanesController, :index
+  get Regexp.new("^/airplanes/new$"), AirplanesController, :new
+  get Regexp.new("^/airplanes/(?<id>\\d+)$"), AirplanesController, :show
+  post Regexp.new("^/airplanes$"), AirplanesController, :create
+end
+
+app = Proc.new do |env|
+  req = Rack::Request.new(env)
+  res = Rack::Response.new
+  router.run(req, res)
+  res.finish
+end
+
+Rack::Server.start(
+  app: app,
+  Port: 3000
+)
