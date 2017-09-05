@@ -27,11 +27,11 @@ def render(template_name)
 end
 ```
 
-Additionally, the framework generates an authenticity token to protect against CSRF attacks. This is included in the controller through the `protect_from_forgery` and `check_authenticity_token` methods.
+Additionally, the framework generates an authenticity token to protect against CSRF attacks. This is verified in the controller through the `protect_from_forgery` and `check_authenticity_token` methods. The authenticity token must be included in every form that sends a `POST`, `PUT`, or `DELETE` request in order for the request to be accepted.
 
 ### Router
 
-Runway includes a router that will allow you to specify routes to the controllers, dynamically handling "GET", "POST", "PUT", and "DELETE" routes by using Ruby's `define_method`.
+Runway includes a router that will allow you to specify routes to the controllers, dynamically handling `GET`, `POST`, `PUT`, and `DELETE` routes by using Ruby's `define_method`.
 
 ```Ruby
 [:get, :post, :put, :delete].each do |http_method|
